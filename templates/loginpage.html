@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns:font-family="http://www.w3.org/1999/xhtml"
+      xmlns:width="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml"
+      xmlns:font-weight="http://www.w3.org/1999/xhtml" xmlns:box-shadow="http://www.w3.org/1999/xhtml"
+      xmlns:color="http://www.w3.org/1999/xhtml" xmlns:font-size="http://www.w3.org/1999/xhtml"
+      xmlns:background-color="http://www.w3.org/1999/xhtml" xmlns:background="http://www.w3.org/1999/xhtml"
+      xmlns:border="http://www.w3.org/1999/xhtml" xmlns:padding="http://www.w3.org/1999/xhtml"
+      xmlns:line-height="http://www.w3.org/1999/xhtml" xmlns:cursor="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/searchingpage.css' %}" type="text/css" media="all">
+</head>
+<body style="height: auto;
+    width: auto;
+    background-color: powderblue">
+        <h1 class="title" text-align: center; font-family: 幼圆; style="margin-top: 100px">基于三元组数据挖掘的知识库用户管理系统V1.0</h1>
+       <table class="loginTable" width="35%" align="center" font-family: 幼圆  style="margin-top: 10px">
+           <form action={% url "login" %} method="post">
+                  <tr align="center">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                 </tr>
+
+                 <tr >
+                      <th colspan="3"align="center">
+                          <h1 class="title" text-align: center; font-family: 幼圆;>登录界面</h1>
+                      </th>
+                 </tr >
+                 <tr >
+                      <th colspan="3"align="center">
+                          <a><input type="text"name="username" class="username" style="height: 20px;
+                              padding: 9px 7px;
+                              font: 16px arial;
+                              border: 1px solid #b8b8b8;
+                              border-bottom: 1px solid #ccc;
+                              border-right: 0;
+                              vertical-align: top;
+                              outline: none;
+                              box-shadow: none;
+                              width: 500px"></a>
+                      </th>
+                 </tr >
+
+                 <tr>
+                     <th colspan="3"align="center">
+                        <a><input type="text"name="password" class="password" style="height: 20px;
+                              padding: 9px 7px;
+                              font: 16px arial;
+                              border: 1px solid #b8b8b8;
+                              border-bottom: 1px solid #ccc;
+                              border-right: 0;
+                              vertical-align: top;
+                              outline: none;
+                              box-shadow: none;
+                              width: 500px"></a>
+                     </th>
+                 </tr>
+
+                 <tr>
+
+                     <th colspan="2"align="left">
+
+                         <input type="submit" value="登  录"style="cursor: pointer;
+                              width: 102px;
+                              height: 38px;
+                              line-height: 38px;
+                              padding: 0;
+                              border: 0;
+                              background: none;
+                              background-color: #8ce3ff;
+                              font-size: 16px;
+                              color: white;
+                              box-shadow: none;
+                              font-weight: normal;">
+                         {% csrf_token %}
+
+                     </th>
+           </form>
+           <form action={% url "registerpage" %} method="post">
+                     <th colspan="2"align="center">
+
+                            <input type="submit" value="点击注册"style="cursor: pointer;
+                              width: 102px;
+                              height: 38px;
+                              line-height: 38px;
+                              padding: 0;
+                              border: 0;
+                              background: none;
+                              background-color: #8ce3ff;
+                              font-size: 16px;
+                              color: white;
+                              box-shadow: none;
+                              font-weight: normal;" >
+                            {% csrf_token %}
+                     </th>
+           </form>
+
+                </tr>
+       </table>
+
+      {% if message %}
+            <h1>{{ message }}</h1>
+      {% endif %}
+
+
+
+
+
+</body>
+</html>

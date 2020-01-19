@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:font-family="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/resultpage.csspage' %}" type="text/css" media="all">
+</head>
+<body>
+
+              <table class="userInfo"   width="60%" align="center" font-family: 幼圆 style="margin-top: 100px" >
+              <tr align="left">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+              </tr>
+              <tr >
+                  <form action={% url "cancellation" %} method="post">
+                      <td colspan="4" align="left" font-family: 幼圆;>
+                        <a> <h3 font-family: 幼圆;>当前用户：{{ username }}</h3>
+                            <input type="submit" value="注销" class="submit"style="cursor: pointer;
+               width: 102px;
+               height: 38px;
+               line-height: 38px;
+               padding: 0;
+               border: 0;
+               background: none;
+               background-color: #38f;
+               font-size: 16px;
+               color: white;
+               box-shadow: none;
+               font-weight: normal;" >
+                            {% csrf_token %}
+                        </a>
+
+                      </td>
+                   </form>
+              </tr>
+             </table>
+              <table class="result"border="1" width="50%" align="center" font-family: 幼圆 style="margin-top: 50px" >
+
+              <tr>
+                 <th colspan="3"align="left"> 查询结果：</th>
+              </tr>
+
+              <tr align="center">
+                  <th>主语</th>
+                  <th>谓语</th>
+                  <th>宾语</th>
+              </tr>
+              {% for i in result %}
+                 <tr align="center">
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.predicate }}</td>
+                    <td>{{ i.object }}</td>
+                 </tr>
+              {% endfor %}
+
+
+              </table>
+
+              <table class="resultManage" width="50%" align="center" font-family: 幼圆  >
+                  <tr align="center">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                 </tr>
+                 <tr >
+                      <th colspan="3"align="left"> url: <a href=" https://baike.baidu.com/item/{{ result.0.subject }}" >https://baike.baidu.com/item/{{ result.0.subject }}</a></th>
+                 </tr >
+
+                 <tr>
+                     <th colspan="3"align="left"> 耗时：{{ time_result }}（秒）</th>
+                 </tr>
+
+                  <tr>
+                      <th colspan="1"align="left">
+                          <form action={% url "save" %} method="post">
+                             <input type="hidden"name="result" value="{{ result }}">
+                             <input type="submit" value="保存"style="cursor: pointer;
+                              width: 102px;
+                              height: 38px;
+                              line-height: 38px;
+                              padding: 0;
+                              border: 0;
+                              background: none;
+                              background-color: #8ce3ff;
+                              font-size: 16px;
+                              color: white;
+                              box-shadow: none;
+                              font-weight: normal;"  >
+                              {% csrf_token %}
+                          </form>
+                      </th>
+
+                      <th colspan="1"align="center">
+                          <form action={% url "back" %} method="post">
+                             <input type="submit" value="返回"style="cursor: pointer;
+                              width: 102px;
+                              height: 38px;
+                              line-height: 38px;
+                              padding: 0;
+                              border: 0;
+                              background: none;
+                              background-color: #8ce3ff;
+                              font-size: 16px;
+                              color: white;
+                              box-shadow: none;
+                              font-weight: normal;"  >
+                              {% csrf_token %}
+                          </form>
+                      </th>
+
+                      <th colspan="1"align="right">
+                        <form action={% url 'download' %} method="post">
+                            <input type="submit" value="下载"style="cursor: pointer;
+                              width: 102px;
+                              height: 38px;
+                              line-height: 38px;
+                              padding: 0;
+                              border: 0;
+                              background: none;
+                              background-color: #8ce3ff;
+                              font-size: 16px;
+                              color: white;
+                              box-shadow: none;
+                              font-weight: normal;" >
+
+                            {% csrf_token %}
+                        </form>
+                      </th>
+
+                  </tr>
+              </table>
+
+
+
+
+
+
+
+</body>
+</html>
